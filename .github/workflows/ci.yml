@@ -45,6 +45,7 @@ jobs:
         run: |
           mvn -Dtest=OmsProviderVerification \
               -Dgit.sha=${{ github.sha }} \
+              -Dpact.verifier.publishResults=true \
               -Dpactbroker.host=127.0.0.1 \
               -Dpactbroker.port=9292 \
               test
