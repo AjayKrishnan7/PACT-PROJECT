@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 00. Checkout Code
+      - name: 0. Checkout Code
         uses: actions/checkout@v5
 
       - name: 0. Set up Java
