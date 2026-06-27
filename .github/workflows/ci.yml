@@ -45,6 +45,7 @@ jobs:
         run: |
           mvn -Dtest=OmsProviderVerification \
               -Dgit.sha=${{ github.sha }} \
+              -Dpact.provider.version=${{ github.sha }} \
               -Dpact.verifier.publishResults=true \
               -Dpactbroker.host=127.0.0.1 \
               -Dpactbroker.port=9292 \
@@ -53,6 +54,12 @@ jobs:
       - name: 5. Record provider deployment to production
 
         run: |
+          pact-broker create-version \
+            --pacticipant oms-provider \
+            --version ${{ github.sha }} \
+            --branch main \
+            --broker-base-url http://127.0.0.1:9292 || true
+
           pact-broker record-deployment \
             --pacticipant oms-provider \
             --version ${{ github.sha }} \

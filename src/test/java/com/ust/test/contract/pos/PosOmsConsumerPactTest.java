@@ -198,7 +198,7 @@ class PosOmsConsumerPactTest {
     @Pact(provider = "oms-provider", consumer = "pos-consumer")
     V4Pact createOrders(PactDslWithProvider builder) {
         return builder
-                .given(" a request to create order")
+                .given("a request to create order")
                 .uponReceiving("a request to create an order")
                 .path("/order")
                 .method("POST")
@@ -257,32 +257,31 @@ class PosOmsConsumerPactTest {
 
         /// ----------------GET-----------------------------
 
-    @Pact(consumer = "pos-consumer", provider = "oms-provider")
-    V4Pact getTheId(PactDslWithProvider builder){
-        {
+        @Pact(provider = "oms-provider", consumer = "pos-consumer")
+        V4Pact getTheId(PactDslWithProvider builder){
             return builder
                     .given("Get check the id exist")
                     .uponReceiving(" Checking for the id")
                     .path("/product")
                     .method("GET")
 
-                    .matchHeader("Content-type", "application/json(;.*)?", "application/json")
+                    .matchHeader("Content-Type", "application/json(;.*)?", "application/json")
 
                     .body(new PactDslJsonBody()
                             .integerType("id", 0)
                             .stringType("status", "New"))
 
+
                     .willRespondWith()
                     .status(200)
-                    .matchHeader("Content-type", "application/json(;.*)?", "application/json")
+
+                    .matchHeader("Content-Type", "application/json(;.*)?", "application/json")
 
                     .body(new PactDslJsonBody()
                             .integerType("id", 1)
                             .stringType("status", "Confirmed"))
-
                     .toPact(V4Pact.class);
         }
-    }
 
     @Test
     @PactTestFor(pactMethod = "getTheId")
