@@ -35,7 +35,7 @@ public class OmsProviderVerification {
     public static SelectorBuilder consumerVersionSelectors() {
         return new SelectorBuilder();
     }
-x
+
 
     @SuppressWarnings("JUnitMalformedDeclaration")
     @BeforeEach
