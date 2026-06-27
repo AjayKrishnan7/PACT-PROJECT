@@ -22,7 +22,7 @@
         <pact.publish.consumer.version>${project.version}</pact.publish.consumer.version>
         <pact.publish.consumer.branchName>local</pact.publish.consumer.branchName>
         <selenide.version>7.16.2</selenide.version>
-
+        <pact.verifier.publishResults>true</pact.verifier.publishResults>
     </properties>
 
 
