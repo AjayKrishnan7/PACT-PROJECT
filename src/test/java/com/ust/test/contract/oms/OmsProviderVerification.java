@@ -21,10 +21,10 @@ import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMoc
 
 
 @Provider("oms-provider")
-//@PactBroker(url = "http://localhost:9292",
-//enablePendingPacts = "true",
-//providerTags = "main",
-//includeWipPactsSince = "2026-06-26")
+@PactBroker(url = "http://localhost:9292",
+enablePendingPacts = "true",
+providerTags = "main",
+includeWipPactsSince = "2026-06-26")
 
 @PactFolder("target/pacts")
 public class OmsProviderVerification {
